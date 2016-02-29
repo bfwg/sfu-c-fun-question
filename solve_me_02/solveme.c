@@ -15,7 +15,7 @@ void iterate(int arr[][10], int  r, int c, int currentPositionR, int currentPosi
     // get next East val
     int nextRVal = arr[currentPositionR + 1][currentPositionC];
     // check if we can go East
-    if (currentVal - nextRVal <= 2 && currentVal - nextRVal >= -2) {
+    if (nextRVal != -1 && currentVal - nextRVal <= 2 && currentVal - nextRVal >= -2) {
       // recursive
       iterate(arr, r, c, currentPositionR + 1, currentPositionC);
     }
@@ -24,7 +24,7 @@ void iterate(int arr[][10], int  r, int c, int currentPositionR, int currentPosi
   // South
   if (currentPositionC < c) {
     int nextCVal = arr[currentPositionR][currentPositionC + 1];
-    if (currentVal - nextCVal <= 2 && currentVal - nextCVal >= -2) {
+    if (nextCVal != -1 && currentVal - nextCVal <= 2 && currentVal - nextCVal >= -2) {
       iterate(arr, r, c, currentPositionR, currentPositionC + 1);
     }
   }
@@ -32,7 +32,7 @@ void iterate(int arr[][10], int  r, int c, int currentPositionR, int currentPosi
   //North
   if (currentPositionR != 0) {
     int preRVal = arr[currentPositionR - 1][currentPositionC];
-    if (currentVal - preRVal <= 2 && currentVal - preRVal >= -2) {
+    if (preRVal != -1 && currentVal - preRVal <= 2 && currentVal - preRVal >= -2) {
       iterate(arr, r, c, currentPositionR - 1, currentPositionC);
     }
   }
@@ -40,7 +40,7 @@ void iterate(int arr[][10], int  r, int c, int currentPositionR, int currentPosi
   //West
   if (currentPositionC != 0) {
     int preCVal = arr[currentPositionR][currentPositionC - 1];
-    if (currentVal - preCVal <= 2 && currentVal - preCVal >= -2) {
+    if (preCVal != -1 && currentVal - preCVal <= 2 && currentVal - preCVal >= -2) {
       iterate(arr, r, c, currentPositionR, currentPositionC - 1);
     }
   }
